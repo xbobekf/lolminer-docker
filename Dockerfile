@@ -1,18 +1,23 @@
-ARG LOLMINER_VERSION=1.52a
+ARG LOLMINER_VERSION=1.63
 ARG CUDA_VERSION=11.7.1
 ARG OS_VERSION=ubuntu22.04
 ARG AMD_DRIVER=21.30
 
 ##########################################################
 # amd
-FROM compscidr/amdgpu:${OS_VERSION}-${AMD_DRIVER} as amd
+#FROM compscidr/amdgpu:${OS_VERSION}-${AMD_DRIVER} as amd
 #FROM compscidr/amdgpu:ubuntu_20.04_21.30 as amd
-ARG LOLMINER_VERSION
+#ARG LOLMINER_VERSION
+#RUN apt-get -qq update && apt-get install -y --no-install-recommends \
+#  curl \
+#  wget \
+#  tar \
+#  ca-certificates
 
-RUN mkdir /lolminer && wget -O lolminer.tar.gz https://github.com/Lolliedieb/lolMiner-releases/releases/download/${LOLMINER_VERSION}/lolMiner_v${LOLMINER_VERSION}_Lin64.tar.gz  \
-  && tar xvf lolminer.tar.gz --strip-components 1 -C /lolminer
+#RUN mkdir /lolminer && wget -O lolminer.tar.gz https://github.com/Lolliedieb/lolMiner-releases/releases/download/${LOLMINER_VERSION}/lolMiner_v${LOLMINER_VERSION}_Lin64.tar.gz  \
+#  && tar xvf lolminer.tar.gz --strip-components 1 -C /lolminer
 
-ENTRYPOINT ["/lolminer/lolMiner"]
+#ENTRYPOINT ["/lolminer/lolMiner"]
 
 ##########################################################
 # nvidia
